@@ -34,41 +34,37 @@ public class Cuboid extends Rectangle implements Comparable<Object> {
 		throw new UnsupportedOperationException("Perimeter of a Cuboid does not exist!");
 	}
 	
+	
+	//This method doesn't seem to have a specific implementation given the instructions for the Midterm;
+	//the comparator methods for volume/area are handled by the nested classes, so what is this meant to sort?
+	//It isn't listed as needing a JUnit test either.
+	//All that said, the implementation below is designed to sort by volume in the absence of clarifying info.
+	//(AKA it's the same as the SortByVolume compare() method)
 	@Override
 	public int compareTo(Object cub) {
-		int returnVal = 0;
-		
-		if (((Cuboid) cub).area() < this.area()) {
-			returnVal = 1;
-		} else if (((Cuboid) cub).area() == this.area()) {
-			returnVal = 0;
-		} else if (((Cuboid) cub).area() > this.area()) {
-			returnVal = -1;
-		}
-		
-		return returnVal;
+		return (int) (((Cuboid) this).volume() - ((Cuboid) cub).volume());
 	}
 	
+	//The static modifier is useful to reference the class for Collections.sort() purposes.
 	public static class SortByVolume implements Comparator<Object> {
 		
 		SortByVolume() {
 			
 		}
 		
-		//This is compare, not compareTo, and so will not work with Collections.sort.
 		public int compare(Object cuboidA, Object cuboidB) {
 			return (int) (((Cuboid) cuboidA).volume() - ((Cuboid) cuboidB).volume());
 		}
 		
 	}
 	
+	//The static modifier is useful to reference the class for Collections.sort() purposes.
 	public static class SortByArea implements Comparator<Object> {
 		
 		SortByArea() {
 			
 		}
 		
-		//This is compare, not compareTo, and so will not work with Collections.sort.
 		public int compare(Object cuboidA, Object cuboidB) {
 			return (int) (((Cuboid) cuboidA).area() - ((Cuboid) cuboidB).area());
 		}

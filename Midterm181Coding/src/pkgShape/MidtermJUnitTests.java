@@ -8,6 +8,7 @@ import java.util.Collections;
 
 import org.junit.Test;
 
+//Every test runs green on my machine: 16/16 Runs, 0 Errors, 0 Failures.
 public class MidtermJUnitTests {
 	
 	//Rectangle tests.

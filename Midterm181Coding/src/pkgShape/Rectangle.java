@@ -39,11 +39,13 @@ public class Rectangle extends Shape implements Comparable<Object> {
 		return (this.iWidth * 2) + (this.iLength * 2);
 	}
 
+	//Assuming here that ascending order means rect should come after the calling object
+	//if rect is larger than the calling object, resulting in smallest first
+	//Easier implementation would be: return ((Rectangle) this.area) - ((Rectangle) rect.area);
+	//that implementation is shown in Cuboid.
 	public int compareTo(Object rect) {
 		int returnVal = 0;
 		
-		//Assuming here that ascending order means rect should come after the calling object
-		//if rect is larger than the calling object, resulting in smallest first
 		if (((Rectangle) rect).area() < this.area()) {
 			returnVal = 1;
 		} else if (((Rectangle) rect).area() == this.area()) {
